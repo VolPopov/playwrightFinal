@@ -31,7 +31,7 @@ test.describe('Register tests', () => {
     const response = await responsePromise;
     const responseBody = await response.json();
 
-    await expect(responseBody.message).toBe(ERROR_MESSAGES['TAKEN_EMAIL']);
+    expect(responseBody.message).toBe(ERROR_MESSAGES['TAKEN_EMAIL']);
   });
 
   test('Attempt to register with a very short password', async ({ page }) => {
@@ -43,7 +43,7 @@ test.describe('Register tests', () => {
     );
     const response = await responsePromise;
     const responseBody = await response.json();
-    await expect(responseBody.message).toBe(ERROR_MESSAGES['SHORT_PASSWORD']);
+    expect(responseBody.message).toBe(ERROR_MESSAGES['SHORT_PASSWORD']);
   });
 
   test('Valid register', async ({ page }) => {

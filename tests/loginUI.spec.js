@@ -23,7 +23,7 @@ test.describe('Login tests', () => {
     await loginUI.login(VALID_CREDENTIALS['VALID_EMAIL'], '');
     const response = await responsePromise;
     const responseBody = await response.json();
-    await expect(responseBody.message).toBe(ERROR_MESSAGES['NO_PASSWORD']);
+    expect(responseBody.message).toBe(ERROR_MESSAGES['NO_PASSWORD']);
   });
 
   test('Attempt to log in with invalid email format', async ({ page }) => {
@@ -34,7 +34,7 @@ test.describe('Login tests', () => {
     );
     const response = await responsePromise;
     const responseBody = await response.json();
-    await expect(responseBody.message).toBe(ERROR_MESSAGES['INVALID_EMAIL']);
+    expect(responseBody.message).toBe(ERROR_MESSAGES['INVALID_EMAIL']);
   });
 
   test('Valid login', async ({ page }) => {

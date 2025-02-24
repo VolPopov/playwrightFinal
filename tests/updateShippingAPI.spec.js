@@ -23,7 +23,7 @@ test.describe('Shipping info tests', () => {
       VALID_CREDENTIALS['VALID_EMAIL'],
       VALID_CREDENTIALS['VALID_PASSWORD']
     );
-    await expect(response.status).toBe(SUCCESS_MESSAGES['STATUS_SUCCESS']);
+    expect(response.status).toBe(SUCCESS_MESSAGES['STATUS_SUCCESS']);
     bearerToken = response.auth.token;
     userID = response.user.id;
   });
@@ -41,10 +41,8 @@ test.describe('Shipping info tests', () => {
       userID,
       bearerToken
     );
-    await expect(response.status).toBe(ERROR_MESSAGES['CLASSIC_ERROR']);
-    await expect(response.errors.city).toContain(
-      ERROR_MESSAGES['INVALID_CITY']
-    );
+    expect(response.status).toBe(ERROR_MESSAGES['CLASSIC_ERROR']);
+    expect(response.errors.city).toContain(ERROR_MESSAGES['INVALID_CITY']);
   });
 
   test('Attempt to update shipping info with invalid postal code', async () => {
@@ -61,8 +59,8 @@ test.describe('Shipping info tests', () => {
       bearerToken
     );
 
-    await expect(response.status).toBe(ERROR_MESSAGES['CLASSIC_ERROR']);
-    await expect(response.errors.postal_code).toContain(
+    expect(response.status).toBe(ERROR_MESSAGES['CLASSIC_ERROR']);
+    expect(response.errors.postal_code).toContain(
       ERROR_MESSAGES['INVALID_POSTAL_CODE']
     );
   });
@@ -80,32 +78,30 @@ test.describe('Shipping info tests', () => {
       userID,
       bearerToken
     );
-    await expect(response.status).toBe(SUCCESS_MESSAGES['STATUS_SUCCESS']);
-    await expect(response.message).toBe(
-      SUCCESS_MESSAGES['SHIPPING_INFO_UPDATED']
-    );
-    await expect(response.shipping_info.city).toBe(
+    expect(response.status).toBe(SUCCESS_MESSAGES['STATUS_SUCCESS']);
+    expect(response.message).toBe(SUCCESS_MESSAGES['SHIPPING_INFO_UPDATED']);
+    expect(response.shipping_info.city).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_CITY']
     );
-    await expect(response.shipping_info.country).toBe(
+    expect(response.shipping_info.country).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_COUNTRY']
     );
-    await expect(response.shipping_info.email).toBe(
+    expect(response.shipping_info.email).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_EMAIL']
     );
-    await expect(response.shipping_info.first_name).toBe(
+    expect(response.shipping_info.first_name).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_FIRST_NAME']
     );
-    await expect(response.shipping_info.last_name).toBe(
+    expect(response.shipping_info.last_name).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_LAST_NAME']
     );
-    await expect(response.shipping_info.phone_number).toBe(
+    expect(response.shipping_info.phone_number).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_PHONE_NUMBER']
     );
-    await expect(response.shipping_info.postal_code).toBe(
+    expect(response.shipping_info.postal_code).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_POSTAL_CODE']
     );
-    await expect(response.shipping_info.street_and_number).toBe(
+    expect(response.shipping_info.street_and_number).toBe(
       VALID_SHIPPING_CREDENTIALS['VALID_STREET']
     );
   });

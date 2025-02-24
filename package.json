@@ -17,6 +17,10 @@
   "homepage": "https://github.com/VolPopov/playwrightFinal#readme",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.13.5"
+    "@types/node": "^22.13.5",
+    "eslint-plugin-playwright": "^2.2.0"
+  },
+  "dependencies": {
+    "eslint": "^9.21.0"
   }
 }
